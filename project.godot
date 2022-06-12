@@ -14,10 +14,25 @@ config/name="Pinball"
 run/main_scene="res://levels/test_level.tscn"
 config/icon="res://icon.png"
 
+[input]
+
+left_paddle={
+"deadzone": 0.5,
+"events": [ Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":4,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
+right_paddle={
+"deadzone": 0.5,
+"events": [ Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":5,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
+
 [physics]
 
 common/enable_pause_aware_picking=true
 
 [rendering]
 
+quality/intended_usage/framebuffer_allocation=0
+quality/filters/msaa=3
 environment/default_environment="res://default_env.tres"
