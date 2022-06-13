@@ -30,6 +30,7 @@ right_paddle={
 [physics]
 
 common/enable_pause_aware_picking=true
+2d/default_gravity=980
 
 [rendering]
 
