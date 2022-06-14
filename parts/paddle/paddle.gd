@@ -1,3 +1,4 @@
+tool
 extends Node2D
 """
 paddle object
@@ -14,11 +15,13 @@ Drawing in Viewport in Godot: Plugin Tutorial 1
 https://www.youtube.com/watch?v=nSqaIY-eJm0&ab_channel=GDQuest
 """
 
-enum SIDEDNESS { left,right,either }
-export(SIDEDNESS) var sidedness = SIDEDNESS.left
+enum SIDEDNESS { left,right }
+export(SIDEDNESS) var sidedness = SIDEDNESS.left setget sidedness_setget
 
-export var angle_max = 20
-export var angle_min = -45
+#export var angle_max = 20 #setget setget_angle_max
+var angle_max := 0.0
+export var angle_min = -45 setget setget_angle_min
+export var angle_range = 45 setget setget_angle_range
 
 export var on_speed = 1000.0 # degrees per second?
 export var off_speed = 300.0
@@ -28,28 +31,11 @@ export var is_activated = false
 
 
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
+	angle_max = angle_min + angle_range
+	_update_paddle_geometry()
 
-	if sidedness == SIDEDNESS.left:
-		get_node("pivot/KinematicBody2D/Polygon2D").set_scale(Vector2( -1, 1 ))
-		var _x = get_node("pivot/KinematicBody2D/CollisionShape2D").get_position().x
-		get_node("pivot/KinematicBody2D/CollisionShape2D").set_position(Vector2( -1 * _x ,1))
-		
-		rotation_degrees = - angle_min
-#		var _amax = angle_max
-#		var _amin = angle_min
-#		angle_max = _amin * -1 
-#		angle_min = _amax * -1
-		angle_max *= -1
-		angle_min *= -1
-		print("left paddle min %s  max %s (%s)"%[angle_min, angle_max, get_rotation_degrees()])
-
-
-	if sidedness == SIDEDNESS.right:
-		rotation_degrees = angle_min
-#		angle_max = 0.0
-#		angle_min = 0.0
 
 func _input(_event):
 	if sidedness == SIDEDNESS.left:
@@ -71,7 +57,6 @@ func _input(_event):
 		if Input.is_action_just_released("right_paddle"):
 				is_activated = false
 				print("right_paddle deactivated" )
-
 
 
 func _physics_process(dt):
@@ -101,4 +86,45 @@ func _physics_process(dt):
 			if self.rotation_degrees > angle_min:
 				self.rotation_degrees = angle_min
 
+
+func setget_angle_min(new_value) -> void:
+	print("setget_angle_min -> %s"% [new_value])
+	angle_min = new_value
+	angle_max = angle_min + angle_range
+	_update_paddle_geometry()
+
+
+func setget_angle_max(new_value) -> void:
+	print("setget_angle_max -> %s"% [new_value])
+	angle_max = new_value
+	angle_range = angle_max - angle_min
+	_update_paddle_geometry()
+	property_list_changed_notify ( )
+
+
+func setget_angle_range(new_value) -> void:
+	angle_range = new_value
+	angle_max = angle_min + angle_range
+	print("setget_angle_range -> %s (new max %s)"%[new_value, angle_max])
+
+
+func sidedness_setget(new_value) -> void:
+	print("sidedness_setget -> [%s]"%[ SIDEDNESS.keys()[new_value] ])
+	sidedness = new_value
+	_update_paddle_geometry()
+
+
+func _update_paddle_geometry() -> void:
+	if sidedness == SIDEDNESS.left:
+#		get_node("pivot/KinematicBody2D/Polygon2D").set_scale(Vector2( -1, 1 ))
+#		var _x = get_node("pivot/KinematicBody2D/CollisionShape2D").get_position().x
+#		get_node("pivot/KinematicBody2D/CollisionShape2D").set_position(Vector2( -1 * _x ,1))
+		
+		#rotation_degrees = - angle_min
+#		angle_max *= -1
+#		angle_min *= -1
+		print("left paddle min %s  max %s (%s)"%[angle_min, angle_max, get_rotation_degrees()])
+
+	elif sidedness == SIDEDNESS.right:
+		rotation_degrees = angle_min
 
