@@ -4,7 +4,7 @@
 [ext_resource path="res://parts/balls/ball.tscn" type="PackedScene" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
-height = 96.0
+height = 100.0
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 514, 74.5 )
@@ -20,7 +20,7 @@ rotation = 2.54818
 script = ExtResource( 1 )
 sidedness = 1
 angle_min = 146
-angle_range = 81
+angle_range = 90
 
 [node name="pivot" type="Node2D" parent="paddle"]
 
@@ -38,11 +38,11 @@ antialiased = true
 polygon = PoolVector2Array( -11.0061, -9.99332, -103.003, -4.93744, -102.997, 5, -10, 10.0067, 10, 9.99451, 9.9939, -10.0061 )
 
 [node name="paddle3" type="Node2D" parent="."]
-position = Vector2( 824, 312 )
-rotation = -3.87463
+position = Vector2( 825, 312 )
+rotation = -3.85718
 script = ExtResource( 1 )
 sidedness = 1
-angle_min = -222
+angle_min = -221
 angle_range = 90
 
 [node name="pivot" type="Node2D" parent="paddle3"]
@@ -60,45 +60,49 @@ scale = Vector2( -1, 1 )
 antialiased = true
 polygon = PoolVector2Array( -11.0061, -9.99332, -103.003, -4.93744, -102.997, 5, -10, 10.0067, 10, 9.99451, 9.9939, -10.0061 )
 
-[node name="paddle2" type="Node2D" parent="."]
-position = Vector2( 392, 504 )
-rotation = 3.78736
+[node name="paddle5" type="Node2D" parent="."]
+position = Vector2( 393, 515 )
+rotation = 6.84169
+scale = Vector2( 1, 1 )
 script = ExtResource( 1 )
-angle_min = 217
-angle_range = -90
+angle_min = 392
+angle_range = -88
 
-[node name="pivot" type="Node2D" parent="paddle2"]
+[node name="pivot" type="Node2D" parent="paddle5"]
 
-[node name="KinematicBody2D" type="KinematicBody2D" parent="paddle2/pivot"]
+[node name="KinematicBody2D" type="KinematicBody2D" parent="paddle5/pivot"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="paddle2/pivot/KinematicBody2D"]
-position = Vector2( -46, 1 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="paddle5/pivot/KinematicBody2D"]
+position = Vector2( 46, 1 )
 rotation = -1.5708
 shape = SubResource( 1 )
 
-[node name="Polygon2D" type="Polygon2D" parent="paddle2/pivot/KinematicBody2D"]
+[node name="Polygon2D" type="Polygon2D" parent="paddle5/pivot/KinematicBody2D"]
 rotation = 0.000607448
+scale = Vector2( -1, 1 )
 antialiased = true
 polygon = PoolVector2Array( -11.0061, -9.99332, -103.003, -4.93744, -102.997, 5, -10, 10.0067, 10, 9.99451, 9.9939, -10.0061 )
 
-[node name="paddle4" type="Node2D" parent="."]
-position = Vector2( 200, 312 )
-rotation = 3.89208
+[node name="paddle6" type="Node2D" parent="."]
+position = Vector2( 204, 316 )
+rotation = 6.99877
+scale = Vector2( 1, 1 )
 script = ExtResource( 1 )
-angle_min = 223
-angle_range = -90
+angle_min = 401
+angle_range = -88
 
-[node name="pivot" type="Node2D" parent="paddle4"]
+[node name="pivot" type="Node2D" parent="paddle6"]
 
-[node name="KinematicBody2D" type="KinematicBody2D" parent="paddle4/pivot"]
+[node name="KinematicBody2D" type="KinematicBody2D" parent="paddle6/pivot"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="paddle4/pivot/KinematicBody2D"]
-position = Vector2( -46, 1 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="paddle6/pivot/KinematicBody2D"]
+position = Vector2( 46, 1 )
 rotation = -1.5708
 shape = SubResource( 1 )
 
-[node name="Polygon2D" type="Polygon2D" parent="paddle4/pivot/KinematicBody2D"]
+[node name="Polygon2D" type="Polygon2D" parent="paddle6/pivot/KinematicBody2D"]
 rotation = 0.000607448
+scale = Vector2( -1, 1 )
 antialiased = true
 polygon = PoolVector2Array( -11.0061, -9.99332, -103.003, -4.93744, -102.997, 5, -10, 10.0067, 10, 9.99451, 9.9939, -10.0061 )
 

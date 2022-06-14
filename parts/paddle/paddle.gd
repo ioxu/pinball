@@ -26,11 +26,7 @@ export var angle_range = 45 setget setget_angle_range
 export var on_speed = 1000.0 # degrees per second?
 export var off_speed = 300.0
 
-
 export var is_activated = false
-
-
-
 
 func _ready():
 	angle_max = angle_min + angle_range
@@ -63,28 +59,63 @@ func _physics_process(dt):
 	#print("rd",self.rotation_degrees)
 	
 	if is_activated:
-		if sidedness == SIDEDNESS.right:
+		if angle_range > 0.0:
 			self.rotation_degrees += on_speed * dt
-		elif  sidedness == SIDEDNESS.left:
+		else:
 			self.rotation_degrees -= on_speed * dt
 
-	if sidedness == SIDEDNESS.right:
+	if angle_range > 0.0:
 		if self.rotation_degrees > angle_max:
 			self.rotation_degrees = angle_max
-	elif sidedness == SIDEDNESS.left:
+	else:
 		if self.rotation_degrees < angle_max:
 			self.rotation_degrees = angle_max
 
 	if is_activated == false:
-		if sidedness == SIDEDNESS.right:
+		if angle_range > 0.0:
 			self.rotation_degrees -= off_speed *dt
 			if self.rotation_degrees < angle_min:
 				self.rotation_degrees = angle_min
 
-		elif sidedness == SIDEDNESS.left:
+		else:
 			self.rotation_degrees += off_speed *dt
 			if self.rotation_degrees > angle_min:
 				self.rotation_degrees = angle_min
+
+#	if is_activated:
+#		if sidedness == SIDEDNESS.right:
+#			self.rotation_degrees += on_speed * dt
+#		elif  sidedness == SIDEDNESS.left:
+#			self.rotation_degrees -= on_speed * dt
+#
+#	if sidedness == SIDEDNESS.right:
+#		if self.rotation_degrees > angle_max:
+#			self.rotation_degrees = angle_max
+#	elif sidedness == SIDEDNESS.left:
+#		if self.rotation_degrees < angle_max:
+#			self.rotation_degrees = angle_max
+#
+#	if is_activated == false:
+#		if sidedness == SIDEDNESS.right:
+#			self.rotation_degrees -= off_speed *dt
+#			if self.rotation_degrees < angle_min:
+#				self.rotation_degrees = angle_min
+#
+#		elif sidedness == SIDEDNESS.left:
+#			self.rotation_degrees += off_speed *dt
+#			if self.rotation_degrees > angle_min:
+#				self.rotation_degrees = angle_min
+
+
+func _process(delta):
+	if Engine.is_editor_hint():
+		update()
+
+
+func _draw():
+	if Engine.is_editor_hint():
+		var _c = Color(0.294067, 0.855469, 0.350207, .5)
+		draw_arc(Vector2.ZERO, 115, 0, deg2rad(angle_range), 32, _c, 3.0, true)
 
 
 func setget_angle_min(new_value) -> void:
