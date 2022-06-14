@@ -1,4 +1,18 @@
 extends Node2D
+"""
+paddle object
+-------------
+- connect to a paddle-control button
+- have custom animatons
+- have custom graphics
+- have custom collision effects
+
+editor-interactive tools:
+How to Create a 2d Manipulator in Godot 3.1: Editor Plugin Overview
+https://www.youtube.com/watch?v=H6TfKYtuM9U&t=5s&ab_channel=GDQuest
+Drawing in Viewport in Godot: Plugin Tutorial 1 
+https://www.youtube.com/watch?v=nSqaIY-eJm0&ab_channel=GDQuest
+"""
 
 enum SIDEDNESS { left,right,either }
 export(SIDEDNESS) var sidedness = SIDEDNESS.left
