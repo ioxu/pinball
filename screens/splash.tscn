@@ -6,12 +6,12 @@
 script = ExtResource( 1 )
 
 [node name="Label" type="Label" parent="."]
-margin_left = 16.0
-margin_top = 212.0
-margin_right = 91.0
-margin_bottom = 226.0
-rect_scale = Vector2( 13.0135, 13.0135 )
-text = "PRANGBELL"
+margin_left = 38.0
+margin_top = 220.0
+margin_right = 120.0
+margin_bottom = 234.0
+rect_scale = Vector2( 11.4936, 11.4936 )
+text = "PRONGBORL"
 
 [node name="engine_version" type="Label" parent="."]
 modulate = Color( 1, 1, 1, 0.188235 )

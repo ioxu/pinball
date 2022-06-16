@@ -18,15 +18,15 @@ https://www.youtube.com/watch?v=nSqaIY-eJm0&ab_channel=GDQuest
 enum SIDEDNESS { left,right }
 export(SIDEDNESS) var sidedness = SIDEDNESS.left setget sidedness_setget
 
-#export var angle_max = 20 #setget setget_angle_max
 var angle_max := 0.0
 export var angle_min = -45 setget setget_angle_min
 export var angle_range = 45 setget setget_angle_range
-export(float, .1, 300) var length := 110.0 setget setget_length
+export(float, 0.1, 300) var length := 110.0 setget setget_length
+export(float, 0.1, 100) var radius := 10.0 setget setget_radius
 export var on_speed = 1000.0 # degrees per second?
 export var off_speed = 300.0
 
-export var is_activated = false
+var is_activated = false
 
 onready var _debug_font = Control.new().get_font("")
 
@@ -39,6 +39,7 @@ var _arc_range_line_colour = Color(0.589844, 0.534546, 0.368652, 0.870588)
 #physics shape
 onready var collision_shape = get_node("pivot/KinematicBody2D/CollisionShape2D")
 
+
 func _ready():
 	angle_max = angle_min + angle_range
 	_update_paddle_geometry()
@@ -49,27 +50,18 @@ func _input(_event):
 	if sidedness == SIDEDNESS.left:
 		if Input.is_action_just_pressed("left_paddle"):
 			if !is_activated:
-				print("left_paddle activate" )
 				is_activated = true
-
 		if Input.is_action_just_released("left_paddle"):
 				is_activated = false
-				print("left_paddle deactivated" )
-
 	if sidedness == SIDEDNESS.right:
 		if Input.is_action_just_pressed("right_paddle"):
 			if !is_activated:
-				print("right_paddle activate" )
 				is_activated = true
-
 		if Input.is_action_just_released("right_paddle"):
 				is_activated = false
-				print("right_paddle deactivated" )
 
 
 func _physics_process(dt):
-	#print("rd",self.rotation_degrees)
-	
 	if is_activated:
 		if angle_range > 0.0:
 			self.rotation_degrees += on_speed * dt
@@ -108,35 +100,34 @@ func _draw():
 
 		# negate rotation
 		draw_set_transform ( Vector2.ZERO, -1* self.rotation, Vector2.ONE )
-		draw_line(_debug_angle_range_text_position*0.2 , _debug_angle_range_text_position*0.9 , _arc_colour, 1.0, true) 
+		draw_line(_debug_angle_range_text_position * 0.2 , _debug_angle_range_text_position*0.9 , _arc_colour, 1.0, true) 
 		draw_string(_debug_font, _debug_angle_range_text_position, _ar+"°", _arc_angele_text_colour)
 
 
 func setget_length(new_value) -> void:
 	length = new_value
-	_debug_angle_range_text_position = Vector2(length -10.0, 0.0).rotated( deg2rad(angle_range) + self.rotation )
+	_debug_angle_range_text_position = Vector2(length - radius, 0.0).rotated( deg2rad(angle_range) + self.rotation )
 	_update_paddle_geometry()
+
+
+func setget_radius(new_value) -> void:
+	radius = new_value
+	_debug_angle_range_text_position = Vector2(length, 0.0).rotated( deg2rad(angle_range) + self.rotation )
+	_update_paddle_geometry()
+
 
 func setget_angle_min(new_value) -> void:
 	print("setget_angle_min -> %s"% [new_value])
 	angle_min = new_value
 	angle_max = angle_min + angle_range
-	_debug_angle_range_text_position = Vector2(length -10.0, 0.0).rotated( deg2rad(angle_range) + self.rotation )
+	_debug_angle_range_text_position = Vector2(length, 0.0).rotated( deg2rad(angle_range) + self.rotation )
 	_update_paddle_geometry()
-
-
-#func setget_angle_max(new_value) -> void:
-#	print("setget_angle_max -> %s"% [new_value])
-#	angle_max = new_value
-#	angle_range = angle_max - angle_min
-#	_update_paddle_geometry()
-#	property_list_changed_notify ( )
 
 
 func setget_angle_range(new_value) -> void:
 	angle_range = new_value
 	angle_max = angle_min + angle_range
-	_debug_angle_range_text_position = Vector2(length -10.0, 0.0).rotated( deg2rad(angle_range) + self.rotation )
+	_debug_angle_range_text_position = Vector2(length , 0.0).rotated( deg2rad(angle_range) + self.rotation )
 	print("setget_angle_range -> %s (new max %s)"%[new_value, angle_max])
 
 
@@ -148,21 +139,10 @@ func sidedness_setget(new_value) -> void:
 
 func _update_paddle_geometry() -> void:
 	if is_instance_valid(collision_shape):
-		collision_shape.set_position(Vector2( length/2.0 ,1))
-		collision_shape.get_shape().height = length -10.0
-
-	if sidedness == SIDEDNESS.left:
-		pass
-#		get_node("pivot/KinematicBody2D/Polygon2D").set_scale(Vector2( -1, 1 ))
-#		var _x = get_node("pivot/KinematicBody2D/CollisionShape2D").get_position().x
-#		get_node("pivot/KinematicBody2D/CollisionShape2D").set_position(Vector2( -1 * _x ,1))
+		collision_shape.set_position(Vector2( length/2.0 - radius/2.0 ,0.0))
+		collision_shape.get_shape().radius = radius
+		collision_shape.get_shape().height = length - radius
 		
-		#rotation_degrees = - angle_min
-#		angle_max *= -1
-#		angle_min *= -1
 
-	elif sidedness == SIDEDNESS.right:
-		pass
-		#rotation_degrees = angle_min
 
 
