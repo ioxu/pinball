@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://parts/paddle/paddle.gd" type="Script" id=1]
-[ext_resource path="res://parts/balls/ball.tscn" type="PackedScene" id=2]
+[ext_resource path="res://parts/balls/pinball.tscn" type="PackedScene" id=2]
+[ext_resource path="res://icon.png" type="Texture" id=3]
 
 [sub_resource type="CapsuleShape2D" id=4]
 height = 100.0
@@ -22,7 +23,7 @@ height = 100.0
 extents = Vector2( 514, 74.5 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 15, 303.5 )
+extents = Vector2( 15, 873.375 )
 
 [node name="level" type="Node2D"]
 
@@ -121,30 +122,22 @@ shape = SubResource( 2 )
 position = Vector2( 555, -75 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D3"]
-position = Vector2( -43, 0 )
+position = Vector2( -43, -1199 )
 shape = SubResource( 2 )
 
 [node name="RigidBody2D2" type="KinematicBody2D" parent="."]
-position = Vector2( -3, 283 )
+position = Vector2( -3, -361 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D2"]
-position = Vector2( 4, 20.5 )
+position = Vector2( 4, 0 )
 shape = SubResource( 3 )
 
 [node name="RigidBody2D4" type="KinematicBody2D" parent="."]
-position = Vector2( 1010, 283 )
+position = Vector2( 1010, -361 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D4"]
-position = Vector2( 4, 20.5 )
+position = Vector2( 4, 0 )
 shape = SubResource( 3 )
-
-[node name="ball" parent="." instance=ExtResource( 2 )]
-position = Vector2( 809, 105 )
-continuous_cd = 2
-
-[node name="ball2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 765, 106 )
-continuous_cd = 2
 
 [node name="funnel1" type="RigidBody2D" parent="."]
 mode = 1
@@ -161,3 +154,16 @@ mode = 1
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="funnel2"]
 position = Vector2( 0, 8 )
 polygon = PoolVector2Array( 648, 512, 648, 480, 834.746, 312.768, 959.964, -8.33128, 1023.96, -8.8867, 1030, 616, 545, 613, 544, 576 )
+
+[node name="pinball" parent="." instance=ExtResource( 2 )]
+position = Vector2( 765, 68 )
+
+[node name="pinball2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 809, 36 )
+
+[node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 0.858824, 0.176471, 0.176471, 0.329412 )
+position = Vector2( 239, -2 )
+rotation = 1.28533
+scale = Vector2( 4.27656, 4.27656 )
+texture = ExtResource( 3 )

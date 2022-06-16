@@ -8,6 +8,16 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "RigidBody2D",
+"class": "Pinball",
+"language": "GDScript",
+"path": "res://parts/balls/pinball.gd"
+} ]
+_global_script_class_icons={
+"Pinball": ""
+}
+
 [application]
 
 config/name="Pinball"
