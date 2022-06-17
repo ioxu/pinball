@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://parts/paddle/paddle.tscn" type="PackedScene" id=1]
 [ext_resource path="res://parts/balls/pinball.tscn" type="PackedScene" id=2]
-[ext_resource path="res://icon.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 514, 74.5 )
@@ -101,9 +100,14 @@ position = Vector2( 765, 68 )
 [node name="pinball2" parent="." instance=ExtResource( 2 )]
 position = Vector2( 809, 36 )
 
-[node name="Sprite" type="Sprite" parent="."]
-modulate = Color( 0.858824, 0.176471, 0.176471, 0.329412 )
-position = Vector2( 239, -2 )
-rotation = 1.28533
-scale = Vector2( 4.27656, 4.27656 )
-texture = ExtResource( 3 )
+[node name="pinball3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 722, 1 )
+
+[node name="pinball4" parent="." instance=ExtResource( 2 )]
+position = Vector2( 766, -31 )
+
+[node name="pinball5" parent="." instance=ExtResource( 2 )]
+position = Vector2( 587, -263 )
+
+[node name="pinball6" parent="." instance=ExtResource( 2 )]
+position = Vector2( 631, -295 )

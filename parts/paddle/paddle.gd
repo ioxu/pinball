@@ -25,6 +25,7 @@ export(float, 0.1, 300) var length := 110.0 setget setget_length
 export(float, 0.1, 100) var radius := 10.0 setget setget_radius
 export var on_speed = 1000.0 # degrees per second?
 export var off_speed = 300.0
+export var draw_debug := false #draw the debug guides in game
 
 var is_activated = false
 
@@ -88,12 +89,12 @@ func _physics_process(dt):
 
 
 func _process(_delta):
-	if Engine.is_editor_hint():
+	if Engine.is_editor_hint() or draw_debug:
 		update()
 
 
 func _draw():
-	if Engine.is_editor_hint():
+	if Engine.is_editor_hint() or draw_debug:
 		draw_arc(Vector2.ZERO, length + 5.0, 0, deg2rad(angle_range), 32, _arc_colour, 2.0, true)
 		var _ar = str(angle_range)
 		draw_string(_debug_font, Vector2(length/2.0, 5.0), SIDEDNESS.keys()[sidedness], _arc_angele_text_colour)
