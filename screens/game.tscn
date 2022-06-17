@@ -19,10 +19,10 @@ hdr = false
 render_target_update_mode = 3
 
 [node name="Camera2D" type="Camera2D" parent="ViewportContainer/Viewport"]
-position = Vector2( 485, 272 )
 current = true
 smoothing_enabled = true
 smoothing_speed = 10.0
+editor_draw_limits = true
 script = ExtResource( 2 )
 
 [node name="fps_label" type="Label" parent="."]

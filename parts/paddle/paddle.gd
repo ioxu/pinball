@@ -19,8 +19,8 @@ enum SIDEDNESS { left,right }
 export(SIDEDNESS) var sidedness = SIDEDNESS.left setget sidedness_setget
 
 var angle_max := 0.0
-export var angle_min = -45 setget setget_angle_min
-export var angle_range = 45 setget setget_angle_range
+export var angle_min = 0 setget setget_angle_min
+export var angle_range = -45 setget setget_angle_range
 export(float, 0.1, 300) var length := 110.0 setget setget_length
 export(float, 0.1, 100) var radius := 10.0 setget setget_radius
 export var on_speed = 1000.0 # degrees per second?
@@ -106,13 +106,13 @@ func _draw():
 
 func setget_length(new_value) -> void:
 	length = new_value
-	_debug_angle_range_text_position = Vector2(length - radius, 0.0).rotated( deg2rad(angle_range) + self.rotation )
+#	_debug_angle_range_text_position = Vector2(length, 0.0).rotated( deg2rad(angle_range) + self.rotation )
 	_update_paddle_geometry()
 
 
 func setget_radius(new_value) -> void:
 	radius = new_value
-	_debug_angle_range_text_position = Vector2(length, 0.0).rotated( deg2rad(angle_range) + self.rotation )
+#	_debug_angle_range_text_position = Vector2(length, 0.0).rotated( deg2rad(angle_range) + self.rotation )
 	_update_paddle_geometry()
 
 
@@ -120,15 +120,16 @@ func setget_angle_min(new_value) -> void:
 	print("setget_angle_min -> %s"% [new_value])
 	angle_min = new_value
 	angle_max = angle_min + angle_range
-	_debug_angle_range_text_position = Vector2(length, 0.0).rotated( deg2rad(angle_range) + self.rotation )
+#	_debug_angle_range_text_position = Vector2(length, 0.0).rotated( deg2rad(angle_range) + self.rotation )
 	_update_paddle_geometry()
 
 
 func setget_angle_range(new_value) -> void:
 	angle_range = new_value
 	angle_max = angle_min + angle_range
-	_debug_angle_range_text_position = Vector2(length , 0.0).rotated( deg2rad(angle_range) + self.rotation )
+#	_debug_angle_range_text_position = Vector2(length , 0.0).rotated( deg2rad(angle_range) + self.rotation )
 	print("setget_angle_range -> %s (new max %s)"%[new_value, angle_max])
+	_update_paddle_geometry()
 
 
 func sidedness_setget(new_value) -> void:
@@ -138,6 +139,7 @@ func sidedness_setget(new_value) -> void:
 
 
 func _update_paddle_geometry() -> void:
+	_debug_angle_range_text_position = Vector2(length, 0.0).rotated( deg2rad(angle_range) + self.rotation )
 	if is_instance_valid(collision_shape):
 		collision_shape.set_position(Vector2( length/2.0 - radius/2.0 ,0.0))
 		collision_shape.get_shape().radius = radius
