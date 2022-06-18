@@ -22,7 +22,7 @@ func _ready():
 
 
 func _process(_delta):
-	if len(balls) > 0 and self.is_visible_in_tree():
+	if len(balls) > 0:
 		update()
 		balls_points_pool_array = PoolVector2Array()
 		top_left = Vector2(MAX_COORD,MAX_COORD)
@@ -38,7 +38,7 @@ func _process(_delta):
 
 
 func _draw():
-	if len(balls) > 0 and self.is_visible_in_tree():
+	if len(balls) > 0 and self.is_visible_in_tree() and do_draw:
 		draw_set_transform_matrix(get_global_transform().inverse())
 		if len(convex_hull) > 3 and calc_convex_hull:
 			draw_colored_polygon(convex_hull, Color(1,1,1,0.12))

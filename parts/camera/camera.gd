@@ -1,9 +1,12 @@
 extends Camera2D
 
 
+export var zoom_speed = 0.1
+
 var tracked_objects = []
 var centre = Vector2.ZERO
 var zoom_factor := 1.0
+var _raw_zoom_factor := 1.0
 var balls_bbox := Rect2()
 
 
@@ -21,7 +24,9 @@ func _process(_delta):
 
 	# zoom
 	balls_bbox = $balls_hull.bbox
-	zoom_factor = remap( max( balls_bbox.size.x, balls_bbox.size.y ) , 90, 1000, 0.75, 2.0 )
+	_raw_zoom_factor = remap( max( balls_bbox.size.x, balls_bbox.size.y ) , 90, 1000, 0.75, 2.0 )
+	zoom_factor = lerp(zoom_factor, _raw_zoom_factor, zoom_speed * _delta)
+#	print("zoom %s (raw %s)"%[zoom_factor, _raw_zoom_factor])
 	self.zoom = Vector2.ONE * zoom_factor
 
 

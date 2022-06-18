@@ -24,9 +24,9 @@ render_target_update_mode = 3
 current = true
 zoom = Vector2( 1.5, 1.5 )
 smoothing_enabled = true
-smoothing_speed = 10.0
 editor_draw_limits = true
 script = ExtResource( 2 )
+zoom_speed = 0.75
 
 [node name="balls_hull" type="Node2D" parent="ViewportContainer/Viewport/Camera2D"]
 script = ExtResource( 4 )
