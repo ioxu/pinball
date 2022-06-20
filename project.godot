@@ -9,12 +9,18 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Area2D",
+"class": "Bumper",
+"language": "GDScript",
+"path": "res://parts/bumpers/bumper.gd"
+}, {
 "base": "RigidBody2D",
 "class": "Pinball",
 "language": "GDScript",
 "path": "res://parts/balls/pinball.gd"
 } ]
 _global_script_class_icons={
+"Bumper": "",
 "Pinball": ""
 }
 
@@ -48,4 +54,4 @@ common/enable_pause_aware_picking=true
 
 quality/intended_usage/framebuffer_allocation=0
 quality/filters/msaa=3
-environment/default_environment="res://default_env.tres"
+environment/default_environment="res://parts/environments/default_env.tres"

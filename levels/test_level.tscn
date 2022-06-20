@@ -1,13 +1,14 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://parts/paddle/paddle.tscn" type="PackedScene" id=1]
 [ext_resource path="res://parts/balls/pinball.tscn" type="PackedScene" id=2]
+[ext_resource path="res://parts/bumpers/bumper.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 514, 74.5 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 15, 873.375 )
+extents = Vector2( 152.5, 873.375 )
 
 [node name="level" type="Node2D"]
 
@@ -68,11 +69,11 @@ shape = SubResource( 2 )
 position = Vector2( -3, -361 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D2"]
-position = Vector2( 4, 0 )
+position = Vector2( -133.5, 0 )
 shape = SubResource( 3 )
 
 [node name="RigidBody2D4" type="KinematicBody2D" parent="."]
-position = Vector2( 1010, -361 )
+position = Vector2( 1161, -361 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D4"]
 position = Vector2( 4, 0 )
@@ -95,19 +96,118 @@ position = Vector2( 0, 8 )
 polygon = PoolVector2Array( 648, 512, 648, 480, 834.746, 312.768, 959.964, -8.33128, 1023.96, -8.8867, 1030, 616, 545, 613, 544, 576 )
 
 [node name="pinball" parent="." instance=ExtResource( 2 )]
-position = Vector2( 765, 68 )
+position = Vector2( 583, 108 )
+continuous_cd = 2
 
 [node name="pinball2" parent="." instance=ExtResource( 2 )]
 position = Vector2( 809, 36 )
+continuous_cd = 2
 
 [node name="pinball3" parent="." instance=ExtResource( 2 )]
-position = Vector2( 722, 1 )
+position = Vector2( 649, -150 )
+continuous_cd = 2
 
 [node name="pinball4" parent="." instance=ExtResource( 2 )]
 position = Vector2( 766, -31 )
+continuous_cd = 2
 
 [node name="pinball5" parent="." instance=ExtResource( 2 )]
 position = Vector2( 587, -263 )
+continuous_cd = 2
 
 [node name="pinball6" parent="." instance=ExtResource( 2 )]
 position = Vector2( 631, -295 )
+scale = Vector2( 1, 0.995024 )
+continuous_cd = 2
+
+[node name="bumper" parent="." instance=ExtResource( 3 )]
+position = Vector2( 512, 597 )
+force = 60000.0
+
+[node name="bumper2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 524, 174 )
+force = 60000.0
+
+[node name="bumper3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 370, 81 )
+force = 60000.0
+
+[node name="bumper4" parent="." instance=ExtResource( 3 )]
+position = Vector2( 672, 77 )
+force = 60000.0
+
+[node name="bumper8" parent="." instance=ExtResource( 3 )]
+position = Vector2( 366, -345 )
+force = 60000.0
+
+[node name="bumper9" parent="." instance=ExtResource( 3 )]
+position = Vector2( 668, -349 )
+force = 60000.0
+
+[node name="bumper5" parent="." instance=ExtResource( 3 )]
+position = Vector2( 518, -30 )
+force = 60000.0
+
+[node name="bumper16" parent="." instance=ExtResource( 3 )]
+position = Vector2( 524, -490 )
+force = 60000.0
+
+[node name="bumper17" parent="." instance=ExtResource( 3 )]
+position = Vector2( 370, -583 )
+force = 60000.0
+
+[node name="bumper18" parent="." instance=ExtResource( 3 )]
+position = Vector2( 672, -587 )
+force = 60000.0
+
+[node name="bumper19" parent="." instance=ExtResource( 3 )]
+position = Vector2( 366, -1009 )
+force = 60000.0
+
+[node name="bumper20" parent="." instance=ExtResource( 3 )]
+position = Vector2( 668, -1013 )
+force = 60000.0
+
+[node name="bumper21" parent="." instance=ExtResource( 3 )]
+position = Vector2( 518, -694 )
+force = 60000.0
+
+[node name="bumper6" parent="." instance=ExtResource( 3 )]
+position = Vector2( 29, -21 )
+force = 60000.0
+flash_color = Color( 1, 0.890196, 0, 1 )
+
+[node name="bumper10" parent="." instance=ExtResource( 3 )]
+position = Vector2( 176, 274 )
+force = 60000.0
+flash_color = Color( 0.231373, 0.517647, 0.968627, 1 )
+
+[node name="bumper11" parent="." instance=ExtResource( 3 )]
+position = Vector2( 849, 271 )
+force = 60000.0
+flash_color = Color( 0.231373, 0.517647, 0.968627, 1 )
+
+[node name="bumper7" parent="." instance=ExtResource( 3 )]
+position = Vector2( 997, -21 )
+force = 60000.0
+flash_color = Color( 1, 0.890196, 0, 1 )
+
+[node name="bumper12" parent="." instance=ExtResource( 3 )]
+position = Vector2( 29, -510 )
+force = 60000.0
+flash_color = Color( 1, 0.890196, 0, 1 )
+
+[node name="bumper13" parent="." instance=ExtResource( 3 )]
+position = Vector2( 997, -510 )
+force = 60000.0
+flash_color = Color( 1, 0.890196, 0, 1 )
+
+[node name="bumper14" parent="." instance=ExtResource( 3 )]
+position = Vector2( 29, -948 )
+force = 60000.0
+flash_color = Color( 1, 0.890196, 0, 1 )
+
+[node name="bumper15" parent="." instance=ExtResource( 3 )]
+position = Vector2( 997, -948 )
+force = 60000.0
+flash_color = Color( 1, 0.890196, 0, 1 )

@@ -1,8 +1,18 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://screens/game.gd" type="Script" id=1]
 [ext_resource path="res://parts/camera/camera.gd" type="Script" id=2]
 [ext_resource path="res://parts/balls/balls_hull.gd" type="Script" id=4]
+
+[sub_resource type="Environment" id=1]
+background_mode = 4
+glow_enabled = true
+glow_levels/1 = true
+glow_levels/2 = true
+glow_intensity = 5.0
+glow_strength = 0.75
+glow_blend_mode = 0
+glow_bicubic_upscale = true
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
@@ -15,8 +25,10 @@ margin_bottom = 40.0
 size = Vector2( 2, 2 )
 handle_input_locally = false
 msaa = 2
-hdr = false
 render_target_update_mode = 3
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="ViewportContainer/Viewport"]
+environment = SubResource( 1 )
 
 [node name="world_drawer" type="Node2D" parent="ViewportContainer/Viewport"]
 
@@ -30,9 +42,22 @@ zoom_speed = 0.75
 
 [node name="balls_hull" type="Node2D" parent="ViewportContainer/Viewport/Camera2D"]
 script = ExtResource( 4 )
+do_draw = true
 
 [node name="fps_label" type="Label" parent="."]
 margin_left = 962.0
 margin_right = 1002.0
 margin_bottom = 14.0
 text = "60"
+
+[node name="hud" type="Node2D" parent="."]
+
+[node name="score_label" type="Label" parent="hud"]
+margin_left = 425.0
+margin_top = 19.0
+margin_right = 465.0
+margin_bottom = 33.0
+rect_scale = Vector2( 3, 3 )
+text = "score"
+align = 1
+valign = 1
