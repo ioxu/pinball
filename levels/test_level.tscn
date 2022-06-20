@@ -5,7 +5,7 @@
 [ext_resource path="res://parts/bumpers/bumper.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 514, 74.5 )
+extents = Vector2( 514, 142.5 )
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 152.5, 873.375 )
@@ -55,7 +55,7 @@ angle_range = -90
 position = Vector2( 552, 610 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
-position = Vector2( -43, 64.5 )
+position = Vector2( -43, 201 )
 shape = SubResource( 2 )
 
 [node name="RigidBody2D3" type="KinematicBody2D" parent="."]
@@ -84,7 +84,7 @@ mode = 1
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="funnel1"]
 position = Vector2( 0, 8 )
-polygon = PoolVector2Array( 648, 512, 648, 480, 834.746, 312.768, 959.964, -8.33128, 1023.96, -8.8867, 1029, 617, 544, 613, 544, 576 )
+polygon = PoolVector2Array( 648, 512, 648, 480, 834.746, 312.768, 959.964, -8.33128, 1023.96, -8.8867, 1029, 666, 544, 661, 544, 576 )
 
 [node name="funnel2" type="RigidBody2D" parent="."]
 position = Vector2( 1024, 0 )
@@ -93,7 +93,7 @@ mode = 1
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="funnel2"]
 position = Vector2( 0, 8 )
-polygon = PoolVector2Array( 648, 512, 648, 480, 834.746, 312.768, 959.964, -8.33128, 1023.96, -8.8867, 1030, 616, 545, 613, 544, 576 )
+polygon = PoolVector2Array( 648, 512, 648, 480, 834.746, 312.768, 959.964, -8.33128, 1023.96, -8.8867, 1030, 663, 545, 665, 544, 576 )
 
 [node name="pinball" parent="." instance=ExtResource( 2 )]
 position = Vector2( 583, 108 )
@@ -121,7 +121,7 @@ scale = Vector2( 1, 0.995024 )
 continuous_cd = 2
 
 [node name="bumper" parent="." instance=ExtResource( 3 )]
-position = Vector2( 512, 597 )
+position = Vector2( 512, 660 )
 force = 60000.0
 
 [node name="bumper2" parent="." instance=ExtResource( 3 )]

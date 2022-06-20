@@ -12,3 +12,6 @@ logs/
 
 # setup formats
 *.psd
+*.png~
+*.kra
+*.kra~

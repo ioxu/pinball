@@ -7,8 +7,10 @@ var is_pinball := true
 func _ready():
 	pass
 
-func do_aply_impulse( v ) -> void:
-	self.apply_central_impulse( v )
+
+func _process(delta):
+	$ball_sprite.rotation = -1 * self.rotation
+
 
 func get_class():
 	return "Pinball"
