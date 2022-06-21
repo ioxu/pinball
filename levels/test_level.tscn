@@ -40,13 +40,13 @@ angle_min = 31
 angle_range = -90
 
 [node name="paddle5" parent="." instance=ExtResource( 1 )]
-position = Vector2( 202, 314 )
+position = Vector2( 201, 316 )
 rotation = -5.55015
 angle_min = -318
 angle_range = -90
 
 [node name="paddle6" parent="." instance=ExtResource( 1 )]
-position = Vector2( 303, 405 )
+position = Vector2( 302, 407 )
 rotation = 0.733038
 angle_min = 42
 angle_range = -90
@@ -84,16 +84,18 @@ mode = 1
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="funnel1"]
 position = Vector2( 0, 8 )
-polygon = PoolVector2Array( 648, 512, 648, 480, 834.746, 312.768, 959.964, -8.33128, 1023.96, -8.8867, 1029, 666, 544, 661, 544, 576 )
+polygon = PoolVector2Array( 648, 512, 648, 480, 836, 312, 924, 380, 959, 344, 889, 224, 959.964, -8.33128, 1023.96, -8.8867, 1029, 666, 544, 661, 544, 576 )
+one_way_collision_margin = 5.0
 
 [node name="funnel2" type="RigidBody2D" parent="."]
-position = Vector2( 1024, 0 )
+position = Vector2( 1023, 0 )
 scale = Vector2( -1, 1 )
 mode = 1
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="funnel2"]
 position = Vector2( 0, 8 )
-polygon = PoolVector2Array( 648, 512, 648, 480, 834.746, 312.768, 959.964, -8.33128, 1023.96, -8.8867, 1030, 663, 545, 665, 544, 576 )
+polygon = PoolVector2Array( 648, 512, 648, 480, 836, 312, 924, 380, 959, 344, 889, 224, 959.964, -8.33128, 1023.96, -8.8867, 1029, 666, 544, 661, 544, 576 )
+one_way_collision_margin = 5.0
 
 [node name="pinball" parent="." instance=ExtResource( 2 )]
 position = Vector2( 583, 108 )
@@ -178,12 +180,12 @@ force = 60000.0
 flash_color = Color( 1, 0.890196, 0, 1 )
 
 [node name="bumper10" parent="." instance=ExtResource( 3 )]
-position = Vector2( 176, 274 )
+position = Vector2( 86, 368 )
 force = 60000.0
 flash_color = Color( 0.231373, 0.517647, 0.968627, 1 )
 
 [node name="bumper11" parent="." instance=ExtResource( 3 )]
-position = Vector2( 849, 271 )
+position = Vector2( 939, 366 )
 force = 60000.0
 flash_color = Color( 0.231373, 0.517647, 0.968627, 1 )
 
