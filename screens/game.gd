@@ -71,7 +71,7 @@ func switch_level( level ) -> void :
 
 
 func _on_score_points( object, n_points):
-	print("[game] score %s points from %s "%[ n_points, object.get_name() ])
+	#print("[game] score %s points from %s "%[ n_points, object.get_name() ])
 	self.points += n_points
 	$hud/score_label.text = format_score(str(self.points))
 

@@ -8,7 +8,7 @@
 extents = Vector2( 514, 142.5 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 152.5, 873.375 )
+extents = Vector2( 152.5, 1227.5 )
 
 [node name="level" type="Node2D"]
 
@@ -66,14 +66,14 @@ position = Vector2( -43, -1199 )
 shape = SubResource( 2 )
 
 [node name="RigidBody2D2" type="KinematicBody2D" parent="."]
-position = Vector2( -3, -361 )
+position = Vector2( -3, -216 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D2"]
-position = Vector2( -133.5, 0 )
+position = Vector2( -133.5, -23.5 )
 shape = SubResource( 3 )
 
 [node name="RigidBody2D4" type="KinematicBody2D" parent="."]
-position = Vector2( 1161, -361 )
+position = Vector2( 1161, -216 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D4"]
 position = Vector2( 4, 0 )
@@ -85,7 +85,7 @@ mode = 1
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="funnel1"]
 position = Vector2( 0, 8 )
 polygon = PoolVector2Array( 648, 512, 648, 480, 836, 312, 924, 380, 959, 344, 889, 224, 959.964, -8.33128, 1023.96, -8.8867, 1029, 666, 544, 661, 544, 576 )
-one_way_collision_margin = 5.0
+one_way_collision_margin = 15.0
 
 [node name="funnel2" type="RigidBody2D" parent="."]
 position = Vector2( 1023, 0 )
@@ -95,7 +95,7 @@ mode = 1
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="funnel2"]
 position = Vector2( 0, 8 )
 polygon = PoolVector2Array( 648, 512, 648, 480, 836, 312, 924, 380, 959, 344, 889, 224, 959.964, -8.33128, 1023.96, -8.8867, 1029, 666, 544, 661, 544, 576 )
-one_way_collision_margin = 5.0
+one_way_collision_margin = 15.0
 
 [node name="pinball" parent="." instance=ExtResource( 2 )]
 position = Vector2( 583, 108 )

@@ -27,7 +27,7 @@ export var on_speed = 1000.0 # degrees per second?
 export var off_speed = 300.0
 export var draw_debug := false #draw the debug guides in game
 
-var is_activated = false
+export var is_activated = false
 
 onready var _debug_font = Control.new().get_font("")
 
